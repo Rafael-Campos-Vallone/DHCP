@@ -1,5 +1,9 @@
 # DHCP
-Configuracion con Kea
+Configuracion DHCP utilizando Kea
+
+Tendremos que poner la configuracion en el fichero "/etc/kea/kea-dhcp4.conf":
+
+vi /etc/kea/kea-dhcp4.conf
 
 ```json
 {
