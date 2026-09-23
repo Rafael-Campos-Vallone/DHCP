@@ -83,34 +83,3 @@ systemctl restart kea-dhcp4-server
 systemctl status kea-dhcp4-server
 ```
 
-## **GNU/Linux como router:**
-
-**Activar el reenvío de paquetes:**
-
-```bash
-VIM --> vi /etc/sysctl.conf = /ip_for (buscar matches en el contenido del fichero)
-
-NANO --> nano /etc/sysctl.conf = F6 ip_for (buscar matches en el contenido del fichero)
-```
-**Descomentamos la linea que dice '#net.ipv4.ip_forward=1' --> 'net.ipv4.ip_forward=1'**
-
-**Activar el NAT:**
-
-```bash
-VIM --> vi /etc/rc.local
-
-NANO --> nano /etc/rc.local
-```
-
-**Pegamos la siguiente configuracion en el fichero:**
-
-```bash
-#!/bin/bash
-iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
-```
-**Concedemos permisos para que utilize la configuracion:**
-
-```bash
-chmod +x /etc/rc.local
-```
-
