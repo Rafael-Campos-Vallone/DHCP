@@ -2,15 +2,15 @@
 
 ## **Configuracion DHCP utilizando Kea**
 
-Instalacion del servicio en las distribuciones de Ubuntu:
+**Instalacion del servicio en las distribuciones de Ubuntu:**
 
 sudo apt update && sudo apt install kea-dhcp4-server --y
 
-Cambiar la configuracion de kea, eliminando el contenido del fichero "/etc/kea/kea-dhcp4.conf":
+**Cambiar la configuracion de kea, eliminando el contenido del fichero "/etc/kea/kea-dhcp4.conf":**
 
 VIM --> vi /etc/kea/kea-dhcp4.conf = 1000dd
 
-Pegar la configuracion y despues editar los valores necesarios para adecuarlos a nuestra red:
+**Pegar la configuracion y despues editar los valores necesarios para adecuarlos a nuestra red:**
 
 ```json
 {
@@ -75,7 +75,7 @@ Pegar la configuracion y despues editar los valores necesarios para adecuarlos a
 }
 ```
 
-Una vez ya tengamos la configuracion en el fichero, debemos reinciar el servicio para que utilize la nueva configuracion y comprobamos que no haya fallos:
+**Una vez ya tengamos la configuracion en el fichero, debemos reinciar el servicio para que utilize la nueva configuracion y comprobamos que no haya fallos:**
 
 ```bash
 systemctl restart kea-dhcp4-server
@@ -85,16 +85,16 @@ systemctl status kea-dhcp4-server
 
 ## **GNU/Linux como router:**
 
-Activar el reenvío de paquetes:
+**Activar el reenvío de paquetes:**
 
 ```bash
 VIM --> vi /etc/sysctl.conf = /ip_for (buscar matches en el contenido del fichero)
 
 NANO --> nano /etc/sysctl.conf = F6 ip_for (buscar matches en el contenido del fichero)
 ```
-Descomentamos la linea que dice '#net.ipv4.ip_forward=1' --> 'net.ipv4.ip_forward=1'
+**Descomentamos la linea que dice '#net.ipv4.ip_forward=1' --> 'net.ipv4.ip_forward=1'**
 
-Activar el NAT:
+**Activar el NAT:**
 
 ```bash
 VIM --> vi /etc/rc.local
@@ -102,13 +102,14 @@ VIM --> vi /etc/rc.local
 NANO --> nano /etc/rc.local
 ```
 
-Pegamos la siguiente configuracion en el fichero:
+**Pegamos la siguiente configuracion en el fichero:**
 
 ```bash
 #!/bin/bash
 iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
 ```
-Concedemos permisos para que utilize la configuracion:
+**Concedemos permisos para que utilize la configuracion:**
+
 ```bash
 chmod +x /etc/rc.local
 ```
