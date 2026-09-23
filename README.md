@@ -1,7 +1,7 @@
-#DHCP
-#**Configuracion DHCP utilizando Kea**
+<font size="+2">DHCP</font>
+**Configuracion DHCP utilizando Kea**
 
-##Instalacion del servicio en las distribuciones de Ubuntu:
+Instalacion del servicio en las distribuciones de Ubuntu:
 
 sudo apt update && sudo apt install kea-dhcp4-server --y
 
@@ -82,7 +82,7 @@ systemctl restart kea-dhcp4-server
 systemctl status kea-dhcp4-server
 ```
 
-##**GNU/Linux como router:**
+**GNU/Linux como router:**
 
 Activar el reenvío de paquetes:
 
