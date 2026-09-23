@@ -1,4 +1,5 @@
-<font size="+2">DHCP</font>
+**DHCP**
+
 **Configuracion DHCP utilizando Kea**
 
 Instalacion del servicio en las distribuciones de Ubuntu:
