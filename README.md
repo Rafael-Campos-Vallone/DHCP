@@ -4,11 +4,17 @@
 
 **Instalacion del servicio en las distribuciones de Ubuntu:**
 
+```bash
 sudo apt update && sudo apt install kea-dhcp4-server --y
+```
 
 **Cambiar la configuracion de kea, eliminando el contenido del fichero "/etc/kea/kea-dhcp4.conf":**
 
+```bash
 VIM --> vi /etc/kea/kea-dhcp4.conf = 1000dd
+
+NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
+```
 
 **Pegar la configuracion y despues editar los valores necesarios para adecuarlos a nuestra red:**
 
