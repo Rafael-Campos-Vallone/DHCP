@@ -34,39 +34,42 @@ NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
     "rebind-timer": 2000,
     "subnet4": [
       {
-        "subnet": "192.168.100.0/24",
+	"id": 1,
+        "subnet": "192.168.50.0/24",
         "match-client-id": false,
         "option-data": [
           {
             "name": "routers",
-            "data": "192.168.100.1"
+            "data": "192.168.50.1"
           },
           {
             "name": "domain-name-servers",
-            "data": "9.9.9.9"
+            "data": "9.9.9.9, 1.1.1.1"
           },
           {
             "name": "ntp-servers",
-            "data": "192.168.100.1"
+            "data": "192.168.50.1"
           },
           {
             "name": "domain-name",
-            "data": "dominio-100.test"
+            "data": "rcampos.test"
           }
         ],
         "pools": [
           {
-            "pool": "192.168.100.100-192.168.100.199"
+            "pool": "192.168.50.100-192.168.50.199"
           }
         ],
+	"reservations-out-of-pool": true,
+
         "reservations": [
           {
             "hw-address": "08:00:27:5c:eb:99",
-            "ip-address": "192.168.100.11"
+            "ip-address": "192.168.50.11"
           },
           {
             "hw-address": "08:00:27:2d:8d:a2",
-            "ip-address": "192.168.100.12"
+            "ip-address": "192.168.50.12"
           }
         ]
       }
@@ -79,6 +82,7 @@ NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
     ]
   }
 }
+
 ```
 
 **Una vez ya tengamos la configuracion en el fichero, debemos reinciar el servicio para que utilize la nueva configuracion y comprobamos que no haya fallos:**
