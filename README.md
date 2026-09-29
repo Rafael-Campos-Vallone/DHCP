@@ -85,7 +85,7 @@ NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
 
 ### **Parametros de la configuracion explicados:**
 
-Cada subred ofrecera su propia configuracion de red personalizada donde podemos configurar: router, dns, dominio, servidor del horario:
+**Cada subred ofrecera su propia configuracion de red personalizada donde podemos configurar: router, dns, dominio, servidor del horario:**
 
 ```json
 "subnet4": [
@@ -113,9 +113,9 @@ Cada subred ofrecera su propia configuracion de red personalizada donde podemos 
      ]
 ```
 
-Para que haya IP asignadas a hosts dinamicamente en un rango especificado:
-```json
+**Para que haya IP asignadas a hosts dinamicamente en un rango especificado:**
 
+```json
   "pools": [
        {
          "pool": "192.168.50.100-192.168.50.199"
@@ -123,11 +123,13 @@ Para que haya IP asignadas a hosts dinamicamente en un rango especificado:
      ]
 ```
 
-Para poder hacer reservas que no esten dentro de un rango de IP que estemos dando dinamicamente para clientes:
+**Para poder hacer reservas que no esten dentro de un rango de IP que estemos dando dinamicamente para clientes:**
 
+```json
 "reservations-out-of-pool": true,
+```
 
-Para hacer reservas de IP y asi tener una IP fija asignada a un cliente en concreto mediante su MAC:
+**Para hacer reservas de IP y asi tener una IP fija asignada a un cliente en concreto mediante su MAC:**
 
 ```json
  "reservations": [
