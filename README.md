@@ -60,8 +60,6 @@ NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
             "pool": "192.168.50.100-192.168.50.199"
           }
         ],
-	"reservations-out-of-pool": true,
-
         "reservations": [
           {
             "hw-address": "08:00:27:5c:eb:99",
@@ -83,6 +81,61 @@ NANO --> nano /etc/kea/kea-dhcp4.conf = Ctrl + Alt + A y Ctrl + K
   }
 }
 
+```
+
+### **Parametros de la configuracion explicados:**
+
+Cada subred ofrecera su propia configuracion de red personalizada donde podemos configurar: router, dns, dominio, servidor del horario:
+
+```json
+"subnet4": [
+   {
+ "id": 1,
+     "subnet": "192.168.50.0/24",
+     "match-client-id": false,
+     "option-data": [
+       {
+         "name": "routers",
+         "data": "192.168.50.1"
+       },
+       {
+         "name": "domain-name-servers",
+         "data": "9.9.9.9, 1.1.1.1"
+       },
+       {
+         "name": "ntp-servers",
+         "data": "192.168.50.1"
+       },
+       {
+         "name": "domain-name",
+         "data": "rcampos.test"
+       }
+     ]
+```
+
+Para que haya IP asignadas a hosts dinamicamente en un rango especificado:
+```json
+
+  "pools": [
+       {
+         "pool": "192.168.50.100-192.168.50.199"
+       }
+     ]
+```
+
+Para poder hacer reservas que no esten dentro de un rango de IP que estemos dando dinamicamente para clientes:
+
+"reservations-out-of-pool": true,
+
+Para hacer reservas de IP y asi tener una IP fija asignada a un cliente en concreto mediante su MAC:
+
+```json
+ "reservations": [
+          {
+            "hw-address": "08:00:27:5c:eb:99",
+            "ip-address": "192.168.50.11"
+          }
+	]
 ```
 
 **Una vez ya tengamos la configuracion en el fichero, debemos reinciar el servicio para que utilize la nueva configuracion y comprobamos que no haya fallos:**
